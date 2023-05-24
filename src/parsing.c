@@ -6,13 +6,14 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:58:14 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/24 13:35:58 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/24 17:00:34 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
 /* NOTES :
+https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901
 pipefd[0] = reference a l'extremite de lecture
 pipefd[1] = reference a l'extremite d'ecriture
 
