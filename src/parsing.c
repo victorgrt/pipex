@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:58:14 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/24 17:00:34 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/25 18:52:10 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 /* NOTES :
 https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901
+
+https://aurelienbrabant.fr/blog/an-introduction-to-unix-pipes
+/bin/echo 'b o n j o u r' | tr -d ' '
+
+http://www.cs.loyola.edu/~jglenn/702/S2005/Examples/dup2.html
+
 pipefd[0] = reference a l'extremite de lecture
 pipefd[1] = reference a l'extremite d'ecriture
 
