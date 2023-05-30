@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:35:07 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:28:22 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/30 15:44:13 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,110 @@
 #include <stdlib.h>
 // https://github.com/gabcollet/pipex/blob/master/srcs/pipex.c
 
-void	execute(char *cmd, char **envp)
-{
-	char *command_args[] = { "/bin/sh", "-c", cmd, NULL };
+// void	execute(char *cmd, char **envp)
+// {
+// 	char	*executable = NULL;
+// 	char	*command_args[] = { NULL, "-c", cmd, NULL };
 
-    // Exécution de la commande en utilisant execve
-    execve("/bin/sh", command_args, envp);
+// 	// Recherche du chemin d'accès de l'interpréteur de commandes
+// 	char	*path = getenv("PATH");
+// 	if (path)
+// 	{
+// 		char	**path_dirs = ft_split(path, ':');
+// 		for (int i = 0; path_dirs[i] != NULL; i++)
+// 		{
+// 			char	*temp1 = ft_strjoin(path_dirs[i], "/");
+// 			char	*temp2 = ft_strjoin(temp1, "sh");
+// 			free(temp1);
+// 			if (access(temp2, X_OK) == 0)
+// 			{
+// 				executable = temp2;
+// 				break;
+// 			}
+// 			free(temp2);
+// 		}
+// 		// Libérer la mémoire allouée pour path_dirs
+// 		// ...
+// 	}
 
-    // Si execve réussit, le code ci-dessous ne sera pas atteint
-    // En cas d'erreur, afficher un message et quitter le processus
-    perror("execve");
-    exit(EXIT_FAILURE);
-}
+// 	// Exécution de la commande en utilisant execve
+// 	if (executable && execve(executable, command_args, envp) == -1)
+// 	{
+// 		perror("execve");
+// 		exit(EXIT_FAILURE);
+// 	}
+// }
+
 
 // void	execute(char *cmd, char **envp)
 // {
-// 	char	*path;
-// 	char	**path_dirs;
-// 	int		i;
+// 	char *command_args[] = { "/bin/sh", "-c", cmd, NULL };
 
-// 	path = NULL;
-// 	path_dirs = NULL;
-// 	i = 0;
-// 	while (envp[i] != NULL)
-// 	{
-// 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-// 		{
-// 			path = ft_strdup(envp[i] + 5);
-// 			break;
-// 		}
-// 		i++;
-// 	}
-// 	if (path == NULL)
-// 	{
-// 		ft_print_error("PATH variable not found");
-// 	}
-// 	path_dirs = ft_split(path, ':');
+//     // Exécution de la commande en utilisant execve
+//     execve("/bin/sh", command_args, envp);
 
-// 	char	*executable = NULL;
+//     // Si execve réussit, le code ci-dessous ne sera pas atteint
+//     // En cas d'erreur, afficher un message et quitter le processus
+//     perror("execve");
+//     exit(EXIT_FAILURE);
+// }
+
+void	execute(char *cmd, char **envp)
+{
+	char	*path;
+	char	**path_dirs;
+	char	*splited;
+	int		i;
+
+	path = NULL;
+	path_dirs = NULL;
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		{
+			path = ft_strdup(envp[i] + 5);
+			break;
+		}
+		i++;
+	}
+	if (path == NULL)
+	{
+		ft_print_error("PATH variable not found");
+	}
+	path_dirs = ft_split(path, ':');
+
+	i = 0;
+	while (path_dirs[i])
+	{
+		splited = ft_strjoin(path_dirs[i], "/");
+		splited = ft_strjoin(splited, cmd);
+		if (access(splited, X_OK) == 0)
+		{
+			printf("access == 0");
+			break;
+		}
+		printf("splited[%d] %s\n", i, splited);
+		i++;
+	}
+	if (!splited)
+	{
+		ft_print_error("ici c'est paris");
+	}
+	i = 0;
+	while (splited[i])
+	{
+		if (splited[i] == ' ')
+		{
+			splited[i] = '\0';
+			printf("true splitted : %s\n", splited);
+
+		}
+		i++;
+
+	}
+	execve(splited, (char *[]){splited, NULL}, envp);
+//char	*executable = NULL;
 // 	i = 0;
 // 	while (path_dirs[i] != NULL) {
 //     char *executable_path = ft_strjoin(ft_strjoin(path_dirs[i], "/"), cmd);
@@ -71,7 +137,7 @@ void	execute(char *cmd, char **envp)
 // 	}
 // 	execve(executable, (char *[]){executable, NULL}, envp);
 // 	ft_print_error("execve");
-// }
+}
 
 void	ft_parent_process(char **av, char **envp, int *fd)
 {
@@ -118,7 +184,6 @@ int	main(int ac, char **av, char **envp)
 	ft_parent_process(av, envp, pipe_fd);
 	return (0);
 }
-
 
 /*static void	get_path_info(t_ppipex ppxi, char **envp)
 {

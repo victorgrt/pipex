@@ -1,1 +1,12 @@
-4
+splited[0] /mnt/nfs/homes/vgoret/bin/echo test
+splited[1] /mnt/nfs/homes/vgoret/bin/echo test
+splited[2] /usr/local/sbin/echo test
+splited[3] /usr/local/bin/echo test
+splited[4] /usr/sbin/echo test
+splited[5] /usr/bin/echo test
+splited[6] /sbin/echo test
+splited[7] /bin/echo test
+splited[8] /usr/games/echo test
+splited[9] /usr/local/games/echo test
+splited[10] /snap/bin/echo test
+true splitted : /snap/bin/echo
