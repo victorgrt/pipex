@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/10 15:03:09 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/10 15:06:58 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	perror(str);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
+
+/*int	main(int ac, char **av)
+{
+	int	i = 1;
+	while (i != ac)
+	{
+		ft_putstr_fd(av[i], 1);
+		write(1, "\n", 1);
+		i++;
+	}
+	return (0);
+}*/

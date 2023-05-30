@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/07 14:18:23 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/14 14:33:38 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	perror(str);
-	exit(1);
+	size_t	i;
+
+	i = 0;
+	while (i != n)
+	{
+		((unsigned char *)s)[i] = c;
+		i++;
+	}
+	return (s);
 }
+
+/*
+int main(void)
+{
+	char    tab[] = "Bonjour";
+	char    x = 'o';
+	ft_memset(tab, x, 3);
+	printf("%s", tab);
+	return (0);
+}*/

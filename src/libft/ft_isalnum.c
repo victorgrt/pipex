@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/07 13:54:15 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/09 17:03:18 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+int	ft_isalnum(int c)
 {
-	perror(str);
-	exit(1);
+	unsigned char	c2;
+
+	c2 = c;
+	if ((c2 >= '0' && c2 <= '9') || ((c2 >= 'A' && c2 <= 'Z')
+			|| (c2 >= 'a' && c2 <= 'z')))
+		return (1);
+	return (0);
 }
+
+/*
+int main(void)
+{
+	printf("%d\n", ft_isalnum('6'));
+	return (0);
+}*/

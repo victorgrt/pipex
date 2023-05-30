@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/08 11:45:37 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/09 17:03:32 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+int	ft_isascii(int c)
 {
-	perror(str);
-	exit(1);
+	return (c >= 0 && c <= 127);
 }
+
+/*
+int	main(void)
+{	
+	int	a = '\n';
+	int b = ft_isascii(a);
+	printf("%d\n", b);
+	return (0);
+}*/

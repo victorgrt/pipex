@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/15 17:03:51 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/18 13:38:22 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+int	ft_lstsize(t_list *lst)
 {
-	perror(str);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
+
+/*int	main(void)
+{
+	t_list	*tab1 = ft_lstnew("I");
+	t_list	*tab2 = ft_lstnew("have");
+	t_list	*tab3 = ft_lstnew("the high ground");
+	tab1->next = tab2;
+	tab2->next = tab3;
+
+	printf("%d\n", ft_lstsize(tab1));
+	return (0);
+}*/

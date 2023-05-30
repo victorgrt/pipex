@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:35:07 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 12:09:42 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/30 13:28:22 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,52 @@ void	execute(char *cmd, char **envp)
     perror("execve");
     exit(EXIT_FAILURE);
 }
+
+// void	execute(char *cmd, char **envp)
+// {
+// 	char	*path;
+// 	char	**path_dirs;
+// 	int		i;
+
+// 	path = NULL;
+// 	path_dirs = NULL;
+// 	i = 0;
+// 	while (envp[i] != NULL)
+// 	{
+// 		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+// 		{
+// 			path = ft_strdup(envp[i] + 5);
+// 			break;
+// 		}
+// 		i++;
+// 	}
+// 	if (path == NULL)
+// 	{
+// 		ft_print_error("PATH variable not found");
+// 	}
+// 	path_dirs = ft_split(path, ':');
+
+// 	char	*executable = NULL;
+// 	i = 0;
+// 	while (path_dirs[i] != NULL) {
+//     char *executable_path = ft_strjoin(ft_strjoin(path_dirs[i], "/"), cmd);
+//     if (access(executable_path, F_OK) == 0) {
+//         executable = ft_strdup(executable_path);
+//         free(executable_path);
+//         break;
+//     }
+//     free(executable_path);
+//     i++;
+// 	}
+// 	// printf("%s\n", executable);
+// 	if (executable == NULL) {
+// 		ft_print_error("Command not found");
+// 		// Vous devriez retourner ou gérer cette situation d'erreur.
+// 		return;
+// 	}
+// 	execve(executable, (char *[]){executable, NULL}, envp);
+// 	ft_print_error("execve");
+// }
 
 void	ft_parent_process(char **av, char **envp, int *fd)
 {

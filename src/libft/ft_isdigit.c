@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/07 11:47:28 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/09 17:03:46 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+int	ft_isdigit(int c)
 {
-	perror(str);
-	exit(1);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
+
+/*
+int	main (void)
+{
+	printf("%d\n", ft_isdigit('4'));
+	return (0);
+}*/

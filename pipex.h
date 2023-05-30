@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:53:46 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/24 12:09:04 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/30 12:30:29 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <sys/types.h>
 # include <unistd.h>
 #include <fcntl.h>
+#include "src/libft/libft.h"
 
 /* Parsing */
 void	ft_check_args(int ac, char **av, int *fd);

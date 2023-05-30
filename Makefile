@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 10:52:21 by vgoret            #+#    #+#              #
-#    Updated: 2023/05/24 13:40:12 by vgoret           ###   ########.fr        #
+#    Updated: 2023/05/30 12:31:36 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,10 @@ BLUE='\033[0;34m'
 all: ${NAME} title
 
 ${NAME} : ${OBJ}
+	@echo ${BOLD} ${GRAY} "○	Making LIBFT..." ${NONE}
+	@make -C src/libft
 	@echo ${BOLD} ${BLUE} "\033[1m○	Compiling files..." ${NONE}
-	$(CC) ${OBJ} ${CCFLAGS} -o $@
+	$(CC) ${OBJ} ${CCFLAGS} ./src/libft/libft.a -o $@
 	@echo ${BOLD} ${GREEN} "‣	Compiled !" ${NONE}
 
 %.o: %.c
@@ -54,6 +56,8 @@ clean:
 
 fclean: clean	
 	@echo ${RED} ${BOLD} "‣	Deleting..." ${NONE}
+	@rm -f src/libft/libft.a
+	@rm -f src/libft/*.o
 	@rm -f ${PROG}
 	@rm -f ${OBJ}
 	@${foreach value, $(OBJ), echo ${value};}

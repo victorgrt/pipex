@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printer.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 10:59:30 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 13:06:37 by vgoret           ###   ########.fr       */
+/*   Created: 2022/11/07 15:58:08 by vgoret            #+#    #+#             */
+/*   Updated: 2022/11/14 14:31:54 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "libft.h"
 
-void	ft_print_error(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	perror(str);
-	exit(1);
+	ft_memset(s, '\0', n);
 }
+
+/*int main(void)
+{
+	size_t  size = 16;
+	char    tab[] = "Wesh la street";
+	ft_bzero(tab, size);
+	printf("%s\n", tab);
+	return (0);
+}*/
