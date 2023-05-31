@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:34:15 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 17:34:43 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:57:07 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_parent_process(char **av, char **envp, int *fd)
 	dup2(fd[0], STDIN_FILENO); //on dup les fd
 	dup2(fileout, STDOUT_FILENO);
 	close(fd[1]);
-	execute(av[3], envp); //fonction qui execute
+	execute(av[3], envp, fd); //fonction qui execute
 }
 
 void	ft_child_process(char **av, char **envp, int *fd)
@@ -35,5 +35,5 @@ void	ft_child_process(char **av, char **envp, int *fd)
 	dup2(filein, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO); //on dup le fd
 	close(fd[0]);
-	execute(av[2], envp); //fonction qui execute
+	execute(av[2], envp, fd); //fonction qui execute
 }

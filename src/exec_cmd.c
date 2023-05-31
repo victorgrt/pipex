@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:36:12 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/30 18:07:03 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/05/31 13:58:46 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*find_path(char *cmd, char **envp)
 	return (0);
 }
 
-void	execute(char *argv, char **envp)
+void	execute(char *argv, char **envp, int *fd)
 {
 	char	**cmd;
 	int		i;
@@ -50,15 +50,23 @@ void	execute(char *argv, char **envp)
 	i = -1;
 	cmd = ft_split(argv, ' ');
 	path = find_path(cmd[0], envp);
+	close(fd[0]);
+	close(fd[1]);
 	if (!path)
 	{
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		ft_print_error("!path not found");
+		close(fd[0]);
+	close(fd[1]);
+		ft_print_error("Chemin vers la commande inconnu");
 	}
 	if (execve(path, cmd, envp) == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
 		ft_print_error("execve");
+	}
 }
 
 // void	execute(char *cmd, char **envp)
