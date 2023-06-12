@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:58:14 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/31 15:58:48 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/02 15:14:25 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_check_existing_files(char *av, int i)
 	if (i == 0)
 		fd = open(av, O_RDONLY, 0777);
 	if (i == 1)
-		fd = open(av, O_RDONLY, 0777);
+		fd = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
 		ft_print_error("Error\nFile Not Found\nFile Descriptor Error");
 	return (fd);
