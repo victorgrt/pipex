@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:35:07 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/12 15:18:19 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/12 15:25:20 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ Trucs a corriger :
 Leaks bizzares peut etre vient du parent (a cause de execve ?)
 -> essayer de setup deux enfants a la place
 
-Gerer si file1 ou file2 existe pas -> si file1 existe pas fait quand meme la commande
-et le met dans file2
+Gerer si file1 ou file2 existe pas -> si file1 existe pas fait quand 
+meme la commande et le met dans file2
 
 https://github.com/gabcollet/pipex/blob/master/srcs/pipex.c
 

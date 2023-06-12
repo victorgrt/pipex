@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:53:46 by vgoret            #+#    #+#             */
-/*   Updated: 2023/05/31 15:58:18 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/12 16:28:47 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_check_args(int ac, char **av);
 int		ft_check_existing_files(char *av, int i);
 
 /* Processes */
-void	ft_parent_process(char **av, char **envp, int *fd);
-void	ft_child_process(char **av, char **envp, int *fd);
+void	ft_child1(char *av, char **envp, int *fd, char *cmd);
+void	ft_child2(char *av, char **envp, int *fd, char *cmd);
 
 /* Execute */
 void	execute(char *cmd, char **envp);

@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:53:49 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/12 15:17:02 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/12 15:24:57 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ int	main(int ac, char **av, char **envp)
 	waitpid(child2, &status, 0);
 	return (0);
 }
-	

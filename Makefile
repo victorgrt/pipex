@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 10:52:21 by vgoret            #+#    #+#              #
-#    Updated: 2023/05/30 17:37:37 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/12 16:28:57 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = ./src/pipex.c \
 	./src/printer.c \
 	./src/processes.c \
 	./src/exec_cmd.c \
-	./src/test.c \
+	./src/notes.c \
 
 OBJ = ${SRC:.c=.o}
 
