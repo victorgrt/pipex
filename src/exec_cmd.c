@@ -6,24 +6,22 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:36:12 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/12 17:11:40 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/12 17:15:05 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	verif_path(char *path, char **paths, char *join_path)
+void	free_paths(char **paths)
 {
-	int i = 0;
+	int	i;
 
-	if (access(path, X_OK) != 0)
+	if (paths)
 	{
-		while (paths[i])
-		{
-			printf("paths[%d] %s\n", i, paths[i]);
-			i++;
-		}
-		printf("path %s\njoin_path %s\n", path, join_path);
+		i = -1;
+		while (paths[++i])
+			free(paths[i]);
+		free(paths);
 	}
 }
 
@@ -45,25 +43,11 @@ char	*find_path(char *cmd, char **envp)
 		path = ft_strjoin(join_path, cmd);
 		free(join_path);
 		if (access(path, F_OK) == 0)
-		{
-			i = -1;
-			while (paths[++i])
-				free(paths[i]);
-			free(paths);
-			printf("path %s\n", path);
 			return (path);
-		}
 		free(path);
 		i++;
 	}
-	if (paths)
-	{
-		i = -1;
-		while (paths[++i])
-			free(paths[i]);
-		free(paths);
-	}
-	// ft_print_error("Error de path");
+	free_paths(paths);
 	return (0);
 }
 
