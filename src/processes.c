@@ -6,7 +6,7 @@
 /*   By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 17:34:15 by vgoret            #+#    #+#             */
-/*   Updated: 2023/06/12 15:16:23 by vgoret           ###   ########.fr       */
+/*   Updated: 2023/06/13 14:02:32 by vgoret           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_child1(char *av, char **envp, int *fd, char *cmd)
 {
 	int	filein;
 
-	filein = open(av, O_RDONLY, 0777);
+	filein = open(av, O_RDONLY);
 	if (filein == -1)
-		ft_print_error("filein = -1 donc open failed");
+		ft_print_error("Error Open Failed\nFile #1 does not exist");
 	dup2(filein, STDIN_FILENO);
 	dup2(fd[1], STDOUT_FILENO);
 	close(filein);
@@ -31,9 +31,9 @@ void	ft_child2(char *av, char **envp, int *fd, char *cmd)
 {
 	int	fileout;
 
-	fileout = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	fileout = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fileout == -1)
-		ft_print_error("fileout = -1 donc open failed");
+		ft_print_error("Error Open Failed\nCouldn't open File #2");
 	dup2(fd[0], STDIN_FILENO);
 	dup2(fileout, STDOUT_FILENO);
 	close(fd[0]);

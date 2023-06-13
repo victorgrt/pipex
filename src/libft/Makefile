@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 13:54:05 by vgoret            #+#    #+#              #
-#    Updated: 2022/11/18 14:12:10 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/13 12:48:32 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ OBJ = ${SRC:.c=.o}
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 .c.o:
-	cc -Wall -Wextra -Werror -c $< -o ${<:.c=.o}
+	@cc -Wall -Wextra -Werror -c $< -o ${<:.c=.o}
 
 ${PROG}: ${OBJ}
-	ar rc ${PROG} ${OBJ}
+	@ar rc ${PROG} ${OBJ}
 
-all: ${PROG}
+all: @${PROG}
 
 clean:
 	rm -f ${OBJ} ${OBJ_BONUS}

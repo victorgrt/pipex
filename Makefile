@@ -6,7 +6,7 @@
 #    By: vgoret <vgoret@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 10:52:21 by vgoret            #+#    #+#              #
-#    Updated: 2023/06/12 16:28:57 by vgoret           ###   ########.fr        #
+#    Updated: 2023/06/13 14:10:46 by vgoret           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,9 @@ CC      =	gcc
 # * SRC * #
 
 SRC = ./src/pipex.c \
-	./src/parsing.c \
 	./src/printer.c \
 	./src/processes.c \
 	./src/exec_cmd.c \
-	./src/notes.c \
 
 OBJ = ${SRC:.c=.o}
 
@@ -48,7 +46,9 @@ ${NAME} : ${OBJ}
 	@make -C src/libft
 	@echo ${BOLD} ${BLUE} "\033[1m○	Compiling files..." ${NONE}
 	$(CC) ${OBJ} ${CCFLAGS} ./src/libft/libft.a -o $@
-	@echo ${BOLD} ${GREEN} "‣	Compiled !" ${NONE}
+	@echo ${BOLD} ${GREEN} "‣	Compiled !\n" ${NONE}
+	@touch file1
+	@touch file2
 
 %.o: %.c
 	@$(CC) ${CCFLAGS} -c $< -o $@
@@ -64,9 +64,10 @@ fclean: clean
 	@rm -f ${OBJ}
 	@${foreach value, $(OBJ), echo ${value};}
 	@rm -f ${NAME}
-	@rm -f ./src/ft_printf/ft_printf.a
-	@rm -f ./src/ft_printf/*.o
 	@rm -f ./a.out
+	rm file1
+	rm file2
+	@echo ${RED} ${BOLD} "\n‣ Folder Cleaned Sucessfully" ${NONE}
 
 re : fclean all
 
